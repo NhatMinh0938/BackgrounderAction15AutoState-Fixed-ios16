@@ -1,0 +1,35 @@
+name: Build deb
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Theos
+        run: |
+          export THEOS=~/theos
+          git clone --recursive --depth 1 https://github.com/theos/theos.git "$THEOS"
+          echo "THEOS=$THEOS" >> "$GITHUB_ENV"
+
+      - name: Install iOS SDK
+        run: |
+          curl -L "https://github.com/theos/sdks/archive/refs/heads/master.tar.gz" | tar -xz -C /tmp
+          cp -R /tmp/sdks-master/iPhoneOS16.5.sdk "$THEOS/sdks/"
+
+      - name: Build package
+        run: |
+          cd BackgrounderAction15AutoState
+          make clean package FINALPACKAGE=1
+          ls -la packages/
+
+      - name: Upload deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backgrounderaction15autostate-deb
+          path: BackgrounderAction15AutoState/packages/*.deb

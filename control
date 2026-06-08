@@ -1,8 +1,8 @@
 Package: com.0xkuj.backgrounderaction15autostate
 Name: BackgrounderAction15AutoState
-Version: 1.0.3
-Architecture: iphoneos-arm
-Description: Save Action state for BackgrounderAction15 CC Toggle
+Version: 1.0.4
+Architecture: iphoneos-arm64
+Description: Auto-enable BackgrounderAction15 and keep selected apps alive in background 24/7 without breaking notifications (rootless iOS 16).
 Maintainer: 0xkuj
 Author: 0xkuj
 Section: Tweaks
