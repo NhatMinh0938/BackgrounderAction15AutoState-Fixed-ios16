@@ -1,5 +1,4 @@
 #import "BackgroundKeepAlive.h"
-#import "PrivateHeaders.h"
 #import <objc/runtime.h>
 
 @interface BackgroundKeepAlive ()
@@ -57,7 +56,7 @@
 
 - (BOOL)isFrontMostBundle:(NSString *)identifier {
     SpringBoard *springBoard = (SpringBoard *)[UIApplication sharedApplication];
-    SBApplication *frontMostApp = [(SpringBoard *)springBoard _accessibilityFrontMostApplication];
+    SBApplication *frontMostApp = [springBoard _accessibilityFrontMostApplication];
     BOOL isFrontMost = [frontMostApp.bundleIdentifier isEqualToString:identifier];
     SBLockScreenManager *lockManager = [objc_getClass("SBLockScreenManager") sharedInstance];
     if (lockManager.isUILocked) {
@@ -71,12 +70,12 @@
     Class hereditaryGrantClass = objc_getClass("RBSHereditaryGrant");
     Class assertionClass = objc_getClass("RBSAssertion");
 
-    uint32_t flags = BKSProcessAssertionPreventTaskSuspend
-        | BKSProcessAssertionPreventTaskThrottleDown
-        | BKSProcessAssertionPreventThrottleDownUI
-        | BKSProcessAssertionWantsForegroundResourcePriority;
+    uint32_t flags = BASBKSProcessAssertionPreventTaskSuspend
+        | BASBKSProcessAssertionPreventTaskThrottleDown
+        | BASBKSProcessAssertionPreventThrottleDownUI
+        | BASBKSProcessAssertionWantsForegroundResourcePriority;
 
-    RBSLegacyAttribute *legacyAttr = [legacyAttrClass attributeWithReason:BKSProcessAssertionReasonBackgroundUI flags:flags];
+    RBSLegacyAttribute *legacyAttr = [legacyAttrClass attributeWithReason:BASBKSProcessAssertionReasonBackgroundUI flags:flags];
     RBSHereditaryGrant *endpointGrant = [hereditaryGrantClass grantWithNamespace:@"com.apple.boardservices.endpoint-injection"
                                                                sourceEnvironment:@"UIScene:com.apple.frontboard.systemappservices::com.apple.springboard"
                                                                       attributes:nil];

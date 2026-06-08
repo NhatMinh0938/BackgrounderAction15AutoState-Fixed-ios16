@@ -1,6 +1,5 @@
 #import "Tweak.h"
 #import "BackgroundKeepAlive.h"
-#import "PrivateHeaders.h"
 
 id module;
 NSMutableDictionary *mainPreferenceDict;

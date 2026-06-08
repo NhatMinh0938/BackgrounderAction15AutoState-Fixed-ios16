@@ -9,7 +9,7 @@ include $(THEOS)/makefiles/common.mk
 TWEAK_NAME = backgrounderaction15autostate
 
 backgrounderaction15autostate_FILES = Tweak.xm BackgroundKeepAlive.mm
-backgrounderaction15autostate_CFLAGS = -fobjc-arc
+backgrounderaction15autostate_CFLAGS = -fobjc-arc -I.
 backgrounderaction15autostate_PRIVATE_FRAMEWORKS = FrontBoardServices RunningBoardServices
 
 include $(THEOS_MAKE_PATH)/tweak.mk

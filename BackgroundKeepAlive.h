@@ -1,6 +1,6 @@
-#import <Foundation/Foundation.h>
+#pragma once
 
-@class FBScene, UIMutableApplicationSceneSettings;
+#import "PrivateHeaders.h"
 
 @interface BackgroundKeepAlive : NSObject
 
@@ -8,8 +8,8 @@
 
 - (BOOL)shouldKeepAliveBundle:(NSString *)bundleId
               selectedBundles:(NSArray *)selectedBundles
-                  toggleOn:(BOOL)toggleOn
-               tweakEnabled:(BOOL)tweakEnabled;
+                     toggleOn:(BOOL)toggleOn
+                 tweakEnabled:(BOOL)tweakEnabled;
 
 - (void)keepAliveScene:(FBScene *)scene;
 - (void)applyKeepAliveSettingsToScene:(FBScene *)scene

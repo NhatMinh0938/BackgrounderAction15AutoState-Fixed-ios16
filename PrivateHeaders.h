@@ -1,3 +1,5 @@
+#pragma once
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
@@ -108,14 +110,14 @@
 - (void)subscribeToProcessDeath:(RBSProcessIdentifier *)processID handler:(dispatch_block_t)handler;
 @end
 
-@interface SpringBoard (BASPrivate)
+@interface SpringBoard : UIApplication
 - (SBApplication *)_accessibilityFrontMostApplication;
 @end
 
-enum {
-    BKSProcessAssertionPreventTaskSuspend = 1 << 0,
-    BKSProcessAssertionPreventTaskThrottleDown = 1 << 1,
-    BKSProcessAssertionWantsForegroundResourcePriority = 1 << 3,
-    BKSProcessAssertionPreventThrottleDownUI = 1 << 5,
-    BKSProcessAssertionReasonBackgroundUI = 9,
+enum BASBKSProcessAssertionFlags {
+    BASBKSProcessAssertionPreventTaskSuspend = 1 << 0,
+    BASBKSProcessAssertionPreventTaskThrottleDown = 1 << 1,
+    BASBKSProcessAssertionWantsForegroundResourcePriority = 1 << 3,
+    BASBKSProcessAssertionPreventThrottleDownUI = 1 << 5,
+    BASBKSProcessAssertionReasonBackgroundUI = 9,
 };
