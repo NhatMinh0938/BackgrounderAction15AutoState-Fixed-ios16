@@ -57,7 +57,7 @@
 
 - (BOOL)isFrontMostBundle:(NSString *)identifier {
     SpringBoard *springBoard = (SpringBoard *)[UIApplication sharedApplication];
-    SBApplication *frontMostApp = [springBoard _accessibilityFrontMostApplication];
+    SBApplication *frontMostApp = [(SpringBoard *)springBoard _accessibilityFrontMostApplication];
     BOOL isFrontMost = [frontMostApp.bundleIdentifier isEqualToString:identifier];
     SBLockScreenManager *lockManager = [objc_getClass("SBLockScreenManager") sharedInstance];
     if (lockManager.isUILocked) {

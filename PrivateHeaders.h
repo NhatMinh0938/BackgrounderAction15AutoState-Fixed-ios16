@@ -11,6 +11,7 @@
 @end
 
 @interface FBSSceneSettings : NSObject
+- (id)mutableCopy;
 @end
 
 @interface FBSMutableSceneSettings : FBSSceneSettings
@@ -65,6 +66,11 @@
 - (void)_didChangeApplicationState:(unsigned)state forBundleIdentifier:(NSString *)bundleIdentifier;
 @end
 
+@interface RBSProcessIdentifier : NSObject
++ (instancetype)identifierWithPid:(int)pid;
+@property (nonatomic, readonly) int pid;
+@end
+
 @interface RBSTarget : NSObject
 + (instancetype)targetWithPid:(int)pid environmentIdentifier:(NSString *)environmentIdentifier;
 @end
@@ -102,13 +108,8 @@
 - (void)subscribeToProcessDeath:(RBSProcessIdentifier *)processID handler:(dispatch_block_t)handler;
 @end
 
-@interface SpringBoard : UIApplication
+@interface SpringBoard (BASPrivate)
 - (SBApplication *)_accessibilityFrontMostApplication;
-@end
-
-@interface RBSProcessIdentifier : NSObject
-+ (instancetype)identifierWithPid:(int)pid;
-@property (nonatomic, readonly) int pid;
 @end
 
 enum {

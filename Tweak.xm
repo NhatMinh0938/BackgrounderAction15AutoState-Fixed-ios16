@@ -96,11 +96,9 @@ static void keepAliveScenesForBundle(NSString *bundleId) {
     }
 }
 
+%new
 - (BOOL)backgrounderShouldKeepActiveState:(NSString *)bundleId {
-    if (shouldKeepAliveBundle(bundleId)) {
-        return YES;
-    }
-    return %orig;
+    return shouldKeepAliveBundle(bundleId);
 }
 %end
 

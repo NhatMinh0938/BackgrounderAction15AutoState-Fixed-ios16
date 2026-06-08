@@ -9,15 +9,6 @@
 - (void)refreshState;
 @end
 
-@interface FBProcess
-- (NSString *)bundleIdentifier;
-- (NSInteger)visibility;
-@end
-
-@interface SBApplication
--(NSString *)bundleIdentifier;
-@end
-
-@interface SpringBoard
+@interface SpringBoard : UIApplication
 - (BOOL)backgrounderShouldKeepActiveState:(NSString *)bundleId;
 @end
